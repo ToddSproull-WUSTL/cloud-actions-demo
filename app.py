@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
     return jsonify({
-        "message": "Hello Cloud Computing!",
+        "message": "AHello Cloud Computing!",
         "status": "success"
     })
 

@@ -7,14 +7,14 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
     return jsonify({
-        "message": "OLD Hello Cloud Computing!",
+        "message": "Hello Cloud Computing!",
         "status": "success"
     })
 
 @app.route('/health')
 def health():
     return jsonify({
-        "status": "healthy"
+        "status": "ealthy"
     })
 
 if __name__ == '__main__':

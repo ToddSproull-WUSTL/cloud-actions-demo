@@ -14,7 +14,7 @@ def hello():
 @app.route('/health')
 def health():
     return jsonify({
-        "status": "ealthy"
+        "status": "healthy"
     })
 
 if __name__ == '__main__':

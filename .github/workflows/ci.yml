@@ -9,44 +9,44 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Check out code
-      uses: actions/checkout@v3
-      
+      uses: actions/checkout@v6
+
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v6
       with:
-        python-version: '3.9'
-        
+        python-version: '3.13'
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        
+
     - name: Run tests
       run: pytest
-      
+
   build:
     needs: test
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    
+
     steps:
     - name: Check out code
-      uses: actions/checkout@v3
-      
+      uses: actions/checkout@v6
+
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
-      
+      uses: docker/setup-buildx-action@v4
+
     - name: Build and tag Docker image
-      uses: docker/build-push-action@v4
+      uses: docker/build-push-action@v7
       with:
         context: .
         push: false
         load: true
         tags: cloud-app:latest
-        
+
     - name: Test Docker image
       run: |
         docker run --name test-container -d -p 8080:8080 cloud-app:latest
